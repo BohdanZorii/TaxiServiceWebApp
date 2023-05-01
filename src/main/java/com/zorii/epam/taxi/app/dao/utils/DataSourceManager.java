@@ -14,7 +14,7 @@ public class DataSourceManager {
     static {
         config.setJdbcUrl("jdbc:mysql://localhost:3306/taxi_service");
         config.setUsername("root");
-        config.setPassword("password");
+        config.setPassword("pass");
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );

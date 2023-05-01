@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <style>
         img {
-            display: block;
+            display: flex;
             margin-left: auto;
             margin-right: auto;
             vertical-align: center;
@@ -40,20 +40,21 @@
             <c:when test="${empty sessionScope.currentUser}">
                 <a href="sign-in.jsp">
                     <button type="button" class="btn btn-primary" style="background-color: #009933;">
-                        <h3><fmt:message key="login"/> </h3>
+                        <h3><fmt:message key="sign.in"/> </h3>
                     </button>
                 </a>
             </c:when>
-            <c:when test="${sessionScope.currentUser.role eq 'CLIENT'}">
-                <input type="hidden" name="action" value="prepare-categories">
-                <button type="submit" class="btn btn-primary" style="background-color: #06357a;">
-                    <h3>Make order</h3>
+            <c:when test="${sessionScope.currentUser.role eq 'client'}">
+            <a href="frontController?action=prepare-categories">
+                <button type="button" class="btn btn-primary" style="background-color: #06357a;">
+                    <h3><fmt:message key="make.order"/> </h3>
                 </button>
+            </a>
             </c:when>
-            <c:when test="${sessionScope.currentUser.role eq 'ADMIN'}">
+            <c:when test="${sessionScope.currentUser.role eq 'manager'}">
                 <a href="frontController?action=display-orders">
                 <button type="button" class="btn btn-primary" style="background-color: #06357a;">
-                        <h3>Overview orders</h3>
+                        <h3><fmt:message key="overview.orders"/> </h3>
                 </button>
                 </a>
             </c:when>

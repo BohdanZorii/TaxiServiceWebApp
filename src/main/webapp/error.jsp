@@ -1,6 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="resources"/>
+<!DOCTYPE html>
+<html lang="${sessionScope.locale}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -43,8 +47,7 @@
 
 <div class="card" >
     <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto; alignment: center">
-        <h1>Error!</h1>
-        <p>Message</p>
+        <h1><fmt:message key="error"/></h1>
     </div>
 </div>
 

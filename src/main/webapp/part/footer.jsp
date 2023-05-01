@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="${sessionScope.locale}" scope="session"/>
 <fmt:setBundle basename="resources"/>
+<!DOCTYPE html>
 <html lang="${sessionScope.locale}">
-<html>
 <head></head>
 
 <body>

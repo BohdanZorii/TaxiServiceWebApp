@@ -1,7 +1,6 @@
 package com.zorii.epam.taxi.app.dao.mysql;
 
 import com.zorii.epam.taxi.app.dao.UserDAO;
-import com.zorii.epam.taxi.app.entity.cab.Status;
 import com.zorii.epam.taxi.app.entity.user.Role;
 import com.zorii.epam.taxi.app.entity.user.User;
 import com.zorii.epam.taxi.app.exception.DAOException;
@@ -39,7 +38,7 @@ public class MySQLUserDAO implements UserDAO {
     @Override
     public User get(String login) throws DAOException {
         User user = null;
-
+        System.out.println(login);
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(GET_USER)) {
             statement.setString(1, login);
@@ -73,10 +72,25 @@ public class MySQLUserDAO implements UserDAO {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(LOGIN_CHECK)) {
 
+            System.out.println(login);
             statement.setString(1, login);
             ResultSet rs = statement.executeQuery();
             rs.next();
             return rs.getBoolean(1);
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public void addAmountSpent(String userLogin, int amountToAdd) throws DAOException {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USER_AMOUNT_SPENT)) {
+
+            statement.setInt(1, amountToAdd);
+            statement.setString(2, userLogin);
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             throw new DAOException(e);

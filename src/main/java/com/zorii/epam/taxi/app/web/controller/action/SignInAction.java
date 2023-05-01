@@ -7,6 +7,8 @@ import com.zorii.epam.taxi.app.web.dto.UserDTO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.UnsupportedEncodingException;
+
 import static com.zorii.epam.taxi.app.web.controller.action.utils.ActionHelper.selectMethod;
 import static com.zorii.epam.taxi.app.service.UserService.*;
 import static com.zorii.epam.taxi.app.web.controller.constant.Params.*;
@@ -21,6 +23,9 @@ public class SignInAction implements Action {
     private String usePost(HttpServletRequest request) throws ServiceException {
         UserDTO userDTO = null;
 
+        try {
+            request.setCharacterEncoding("UTF-8");
+        }catch (UnsupportedEncodingException e){}
         try {
 
             userDTO = signUserIn(request.getParameter(LOGIN), request.getParameter(PASSWORD));

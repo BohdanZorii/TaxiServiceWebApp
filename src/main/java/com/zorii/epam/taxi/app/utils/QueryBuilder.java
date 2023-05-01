@@ -28,14 +28,14 @@ public abstract class QueryBuilder {
 
     public QueryBuilder setDateFilter(String date) {
         if (date != null) {
-            filters.add("date_of_order=" + date);
+            filters.add("date_of_order='" + date+"'");
         }
         return this;
     }
 
     public QueryBuilder setClientFilter(String clientLogin) {
         if (clientLogin != null) {
-            filters.add("client_login=" + clientLogin);
+            filters.add("client_login='" + clientLogin+"'");
         }
         return this;
     }

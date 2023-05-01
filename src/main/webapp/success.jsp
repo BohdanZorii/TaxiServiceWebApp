@@ -1,6 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="resources"/>
+<!DOCTYPE html>
+<html lang="${sessionScope.locale}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -43,12 +47,12 @@
 
 <jsp:include page="part/header.jsp"/>
 
-<div class="card">
+<div class="card" style=" margin-top: 50px;">
     <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
         <i class="checkmark">✓</i>
     </div>
-    <h1>Success</h1>
-    <p>Driver received your location<br/> Cab is on it's way!</p>
+    <h1><fmt:message key="success"/></h1>
+    <p><fmt:message key="success.message"/></p>
 </div>
 
 <jsp:include page="part/footer.jsp"/>

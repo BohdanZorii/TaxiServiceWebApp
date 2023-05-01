@@ -5,9 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CabDTO {
+public class CategoryDTO {
     private int id;
-    private int capacity;
-    private CategoryDTO category;
-    private String status;
+    private String name;
 }

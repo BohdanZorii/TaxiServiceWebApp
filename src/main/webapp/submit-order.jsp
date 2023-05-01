@@ -1,12 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ACER
-  Date: 03.02.2023
-  Time: 8:25
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="resources"/>
+<!DOCTYPE html>
+<html lang="${sessionScope.locale}">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -28,14 +26,14 @@
 
 
           <h1 class="card-title text-center mb-5 fw-light fs-5">
-            Order info        <a href="make-order.jsp">
+            <fmt:message key="order.info"/>      <a href="make-order.jsp">
             <i class="material-icons">edit</i>
           </a>
           </h1>
 
           <div class="row">
             <div class="col-md-6">
-              <label>Departure address:</label>
+              <label><fmt:message key="departure.address"/></label>
             </div>
             <div class="col-md-6">
               <p>${sessionScope.order.departureAddress}</p>
@@ -44,7 +42,7 @@
 
           <div class="row">
             <div class="col-md-6">
-              <label>Destination address:</label>
+              <label><fmt:message key="destination.address"/></label>
             </div>
             <div class="col-md-6">
               <p>${sessionScope.order.destinationAddress}</p>
@@ -53,7 +51,7 @@
 
           <div class="row">
             <div class="col-md-6">
-              <label>Number of passengers:</label>
+              <label><fmt:message key="passengers.number"/></label>
             </div>
             <div class="col-md-6">
               <p>${sessionScope.order.numOfPassengers}</p>
@@ -62,25 +60,33 @@
 
           <div class="row">
             <div class="col-md-6">
-              <label>Cab category:</label>
+              <label><fmt:message key="category"/></label>
             </div>
             <div class="col-md-6">
-              <p>${sessionScope.order.cabCategory}</p>
+              <p>${sessionScope.order.cabCategory.name}</p>
             </div>
-
             <div class="row">
               <div class="col-md-6">
-                <label>Cost:</label>
+                <label><fmt:message key="distance"/></label>
+              </div>
+              <div class="col-md-6">
+                <p>${sessionScope.order.distance}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label><fmt:message key="cost"/></label>
               </div>
               <div class="col-md-6">
                 <p>${sessionScope.order.cost}</p>
               </div>
           </div>
               <div class="d-grid">
-
+                <a href="frontController?action=make-order">
               <button class="btn btn-secondary btn-login text-uppercase fw-bold" type="button">
-                <a href="frontController?action=make-order">SUBMIT ORDER </a>
+               <fmt:message key="submit.order"/>
               </button>
+                </a>
 
             </div>
         </div>

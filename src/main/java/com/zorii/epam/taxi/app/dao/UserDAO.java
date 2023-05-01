@@ -15,5 +15,6 @@ public interface UserDAO {
     boolean isRegistered(String login) throws DAOException;
     boolean isPasswordCorrect(String password, String login) throws DAOException;
     int calculateAmountSpent(String login) throws DAOException;
+    void addAmountSpent(String userLogin, int amountToAdd)throws DAOException;
     List<Role> getRoles() throws DAOException;
 }

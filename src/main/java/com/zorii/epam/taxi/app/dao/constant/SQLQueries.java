@@ -31,6 +31,9 @@ public class SQLQueries {
     public static final String UPDATE_USER_INFO = "UPDATE taxi_service.user SET " +
             "first_name=?, last_name=?, email=?" +
             "WHERE login=?";
+    public static final String UPDATE_USER_AMOUNT_SPENT = "UPDATE taxi_service.user SET " +
+            "amount_spent=? " +
+            "WHERE login=?";
     public static final String UPDATE_CAB_STATUS = "UPDATE taxi_service.cab SET status_id=? WHERE id=?";
     //CHECK
     public static final String LOGIN_CHECK = "SELECT EXISTS(SELECT * FROM taxi_service.user WHERE login=?);";

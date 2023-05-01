@@ -21,6 +21,7 @@ public class Validator {
     }
 
     public static void validateName(String name) throws InvalidFormatException {
+        System.out.println(name);
         validate(name, NAME_PATTERN, INVALID_NAME_MESSAGE);
     }
 

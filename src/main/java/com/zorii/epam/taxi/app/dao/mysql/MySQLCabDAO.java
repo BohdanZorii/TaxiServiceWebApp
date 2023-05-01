@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.zorii.epam.taxi.app.dao.constant.SQLQueries.*;
+import static com.zorii.epam.taxi.app.web.controller.constant.Params.*;
 
 public class MySQLCabDAO implements CabDAO {
     private DataSource dataSource;
@@ -112,6 +113,7 @@ public class MySQLCabDAO implements CabDAO {
 
     @Override
     public List<Category> getCategories() throws DAOException {
+
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(GET_CATEGORIES)) {
             ResultSet rs = statement.executeQuery();
@@ -138,14 +140,6 @@ public class MySQLCabDAO implements CabDAO {
                 .build();
     }
 
-    private Category parseCategory(ResultSet rs) throws SQLException {
-        return Category.builder()
-                .id(rs.getInt("category_id"))
-                .name(rs.getString("category_name"))
-                .tariff(rs.getInt("tariff"))
-                .build();
-    }
-
     private Status parseStatus(ResultSet rs) throws SQLException {
         return Status.builder()
                 .id(rs.getInt("status_id"))
@@ -153,6 +147,13 @@ public class MySQLCabDAO implements CabDAO {
                 .build();
     }
 
-
+    private Category parseCategory(ResultSet rs) throws SQLException {
+        return Category.builder()
+                .id(rs.getInt("category_id"))
+                .nameOnEN(rs.getString("category_name_en"))
+                .nameOnUA(rs.getString("category_name_ua"))
+                .tariff(rs.getInt("tariff"))
+                .build();
+    }
 
 }

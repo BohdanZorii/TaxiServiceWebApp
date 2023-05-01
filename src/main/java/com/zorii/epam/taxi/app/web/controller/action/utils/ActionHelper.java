@@ -13,12 +13,14 @@ public class ActionHelper {
     public static boolean selectMethod(HttpServletRequest request) {
         return request.getMethod().equals("POST");
     }
+
+    public static String getLocale(HttpServletRequest request){
+        return (String) request.getSession().getAttribute(LOCALE);
+    }
     public static QueryBuilder transferAttributesToQueryBuilder(HttpServletRequest request, QueryBuilder builder) throws ServiceException {
         String currentPageString = String.valueOf(request.getAttribute(PAGINATION_CURRENT_PAGE));
         int currentPage = parseCurrentPageString(currentPageString);
-        System.out.println(currentPage + " currentPage");
         builder.setSortByField(request.getParameter(SORT_BY_FIELD))
-                .setSortingOrder(request.getParameter(SORT_ORDER))
                 .setClientFilter(request.getParameter(CLIENT_FILTER))
                 .setDateFilter(request.getParameter(DATE_FILTER))
                 .setOffset(calculateOffset(currentPage));
@@ -29,9 +31,7 @@ public class ActionHelper {
     public static int transferPaginationInfoToRequest(HttpServletRequest request, int numOfPages) throws ServiceException {
         int currentPage;
         String currentPageString = request.getParameter(PAGINATION_CURRENT_PAGE);
-        System.out.println(currentPageString);
         currentPage = parseCurrentPageString(currentPageString);
-        System.out.println(currentPage);
         request.setAttribute(PAGINATION_CURRENT_PAGE, currentPage);
         request.setAttribute(PAGINATION_START_PAGE, calculateStartPage(currentPage, numOfPages));
         request.setAttribute(PAGINATION_END_PAGE, calculateEndPage(currentPage, numOfPages));

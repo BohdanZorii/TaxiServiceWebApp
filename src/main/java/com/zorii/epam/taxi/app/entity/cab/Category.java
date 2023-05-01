@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class Category {
     private int id;
-    private String name;
+    private String nameOnEN;
+    private String nameOnUA;
     private double tariff;
 }

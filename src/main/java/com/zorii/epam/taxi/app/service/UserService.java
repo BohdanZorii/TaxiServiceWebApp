@@ -64,8 +64,10 @@ public class UserService {
         UserDTO userDTO;
         try {
             if (!userDAO.isRegistered(login)) {
+                System.out.println("ne zareestrovaniy");
                 throw new UserSigningInException("not registered");
             }
+            System.out.println("true");
             User user = userDAO.get(login);
             verify(password, user.getPassword());
             userDTO = convertUserToDTO(user);
@@ -86,6 +88,14 @@ public class UserService {
 
         try {
             userDAO.updateUserInfo(user);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public static void addAmountSpent(String userLogin, int amountToAdd)throws ServiceException{
+        try {
+            userDAO.addAmountSpent(userLogin, amountToAdd);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }

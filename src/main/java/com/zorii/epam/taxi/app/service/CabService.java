@@ -38,7 +38,7 @@ public class CabService {
 
     public static List<Cab> getSuitableCabs(OrderDTO orderDTO) throws ServiceException {
         int numOfPassengers = Integer.valueOf(orderDTO.getNumOfPassengers());
-        int categoryId = getCategory(orderDTO.getCabCategory()).getId();
+        int categoryId = getCategory(orderDTO.getCabCategory().getName()).getId();
         try {
             return cabDAO.getSuitableCabs(numOfPassengers, categoryId);
         }catch (DAOException e){
@@ -51,8 +51,9 @@ public class CabService {
             List<Category> categories = cabDAO.getCategories();
             Category result = categories.get(0);
             for (Category category : categories) {
-                if (category.getName().equals(name)) {
+                if (category.getNameOnEN().equals(name) || category.getNameOnUA().equals(name)) {
                     result = category;
+                    break;
                 }
             }
             return result;

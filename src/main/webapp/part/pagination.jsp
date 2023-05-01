@@ -9,7 +9,7 @@
             <c:forEach var="page" begin="${requestScope.startPage}" end="${requestScope.endPage}">
                 <li class="page-item">
                     <a class="page-link ${requestScope.currentPage eq page ? 'dark-active' : 'link-dark'}"
-                       href="frontController?action=display-orders&currentPage=${page}">
+                       href="frontController?action=display-orders&currentPage=${page}${not empty requestScope.sortByField?'&sortByField='.concat(requestScope.sortByField):''}${not empty requestScope.clientFilter?'&clientFilter='.concat(requestScope.clientFilter):''}${not empty requestScope.dateFilter?'&dateFilter='.concat(requestScope.dateFilter):''}">
                             ${page}
                     </a>
                 </li>

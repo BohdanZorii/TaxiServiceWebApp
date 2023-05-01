@@ -3,6 +3,8 @@ package com.zorii.epam.taxi.app.web.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 @Builder
 public class OrderDTO {
@@ -10,8 +12,9 @@ public class OrderDTO {
     private String departureAddress;
     private String destinationAddress;
     private String numOfPassengers;
-    private String cabCategory;
+    private CategoryDTO cabCategory;
     private int cost;
     private UserDTO client;
     private String distance;
+    private Date date;
 }

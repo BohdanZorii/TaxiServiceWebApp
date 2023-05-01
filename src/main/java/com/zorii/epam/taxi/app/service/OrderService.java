@@ -42,6 +42,8 @@ public class OrderService {
         updateStatus(cab);
         order.setCabId(cab.getId());
 
+
+
         try {
             orderDAO.add(order);
 
@@ -60,6 +62,7 @@ public class OrderService {
 
     public static List<Order> getOrdersByConditions(String postfixQuery) throws ServiceException {
 
+        System.out.println(postfixQuery);
         try {
             return orderDAO.getOrdersByConditions(postfixQuery);
 
@@ -70,15 +73,14 @@ public class OrderService {
 
     public static int calculateOrderCost(OrderDTO orderDTO) throws ServiceException {
         validatePositiveInt(orderDTO.getNumOfPassengers());
-        ;
 
         User client = convertDTOtoUser(orderDTO.getClient());
 
-        double tariff = CabService.getCategory(orderDTO.getCabCategory()).getTariff();
+        double tariff = CabService.getCategory(orderDTO.getCabCategory().getName()).getTariff();
         int distance = Integer.valueOf(orderDTO.getDistance());
         double discount = calculateDiscount(client.getAmountSpent());
 
-        return (int) Math.round(distance * COST_PER_KM * tariff * (100 - discount));
+        return (int) Math.round(distance * COST_PER_KM * tariff * (1 - discount));
     }
 
     private static double calculateDiscount(int amountSpent) {

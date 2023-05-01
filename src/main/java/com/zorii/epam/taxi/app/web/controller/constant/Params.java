@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Params {
     public static final String LOCALE = "locale";
+    public static final String EN="en";
+    public static final String UA="uk_UA";
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";
     public static final String EMAIL = "email";
@@ -28,7 +30,9 @@ public class Params {
     public static final String PAGINATION_CURRENT_PAGE = "currentPage";
     public static final String SORT_BY_FIELD = "sortByField";
     public static final String SORT_BY_OPTIONS = "sortByOptions";
-    public static final List<String> DEFAULT_SORTING_OPTIONS= new ArrayList<>(List.of("Date", "Price"));
+    public static final String CLIENT_OPTIONS = "clientOptions";
+    public static final String DATE_OPTIONS = "dateOptions";
+    public static final List<String> DEFAULT_SORTING_OPTIONS= new ArrayList<>(List.of("date_of_order", "cost_of_order"));
     public static final String SORT_ORDER = "sortOrder";
     public static final String CLIENT_FILTER = "clientFilter";
     public static final String DATE_FILTER = "dateFilter";
